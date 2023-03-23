@@ -2,6 +2,8 @@ import psutil
 import time
 import datetime
 import os
+import sys
+sys.path.append('C:\\Users\\micheln.Z-POINT-HH\\Desktop\\LF8-Monitoring\\Code\\Monitoring\\Code\\Dienste')
 import sending_mail
 
 # Festlegen der Grenzwerte
