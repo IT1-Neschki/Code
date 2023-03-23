@@ -16,8 +16,8 @@ sys.path.append(sending_mail_dir)
 import sending_mail
 
 # Festlegen der Grenzwerte
-soft_limit = 1
-hard_limit = 2
+soft_limit = 70
+hard_limit = 90
 
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
