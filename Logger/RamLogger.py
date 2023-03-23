@@ -3,17 +3,11 @@ import datetime
 import os
 import sending_mail
 
-<<<<<<< HEAD
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 soft_limit = 1
 hard_limit = 2
-=======
-# Festlegen der Grenzwerte
-soft_limit = 20
-hard_limit = 40
->>>>>>> a6868f3b10eb3de3e6a94f51cd46ba069f95b538
 
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
