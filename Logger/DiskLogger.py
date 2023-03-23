@@ -25,6 +25,17 @@ def write_log(message):
 disk_usage = psutil.disk_usage('/')
 used_percent = disk_usage.percent
 
+# Erstellen der Auslastungs-Logdatei
+auslastungs_log = 'AuslastungsLog.txt'
+with open(auslastungs_log, 'a') as f:
+    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+
+# Schreiben der aktuellen Disk-Auslastung in die Auslastungs-Logdatei
+with open(auslastungs_log, 'a') as logfile:
+    logfile.write('{} - {} - Disk usage at {}%\n'.format(
+        datetime.datetime.now(), hostname, used_percent))
+
+
 # Warnung bei Überschreitung des Softlimits
 if used_percent > soft_limit:
     message = '{} - {} - WARNING: Disk usage at {}%'.format(
