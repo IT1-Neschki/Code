@@ -8,7 +8,7 @@ soft_limit = 2
 hard_limit = 15
 
 # Netzwerkname der Maschine
-hostname = psutil.net_if_addrs()['Ethernet'][0].address
+hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 # Überprüfen und Erstellen der Logdatei
 log_file = 'log.txt'
