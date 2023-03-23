@@ -8,3 +8,19 @@ Logdatei erstellt am 2023-03-23 16:57:13.157606
 2023-03-23 16:57:13.158602 - 9C-29-76-49-4E-36 - Disk usage at 23.8%
 Logdatei erstellt am 2023-03-23 16:57:13.919143
 2023-03-23 16:57:13.920139 - 9C-29-76-49-4E-36 - Ram usage at 37.6%
+Logdatei erstellt am 2023-03-23 16:58:14.615115
+2023-03-23 16:58:14, Frequenz: 0.99, Auslastung: 12.50
+Logdatei erstellt am 2023-03-23 16:58:15.427765
+2023-03-23 16:58:15.428319 - 9C-29-76-49-4E-36 - Disk usage at 23.8%
+Logdatei erstellt am 2023-03-23 16:58:16.026797
+2023-03-23 16:58:16.027794 - 9C-29-76-49-4E-36 - Ram usage at 37.4%
+Logdatei erstellt am 2023-03-23 16:59:16.785365
+2023-03-23 16:59:16, Frequenz: 0.99, Auslastung: 21.10
+Logdatei erstellt am 2023-03-23 16:59:17.777108
+2023-03-23 16:59:17.778102 - 9C-29-76-49-4E-36 - Ram usage at 37.6%
+Logdatei erstellt am 2023-03-23 17:00:18.508098
+2023-03-23 17:00:18, Frequenz: 0.99, Auslastung: 16.30
+Logdatei erstellt am 2023-03-23 17:00:19.434931
+2023-03-23 17:00:19.435920 - 9C-29-76-49-4E-36 - Ram usage at 37.2%
+Logdatei erstellt am 2023-03-23 17:02:08.782035
+2023-03-23 17:02:08.783052 - 9C-29-76-49-4E-36 - Disk usage at 23.8%
