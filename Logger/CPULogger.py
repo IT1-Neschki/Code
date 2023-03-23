@@ -3,7 +3,17 @@ import time
 import datetime
 import os
 import sys
-sys.path.append('C:\\Users\\micheln.Z-POINT-HH\\Desktop\\LF8-Monitoring\\Code\\Monitoring\\Code\\Dienste')
+import os
+
+# Verzeichnis des aktuellen Skripts (DiskLogger.py)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Verzeichnis des Moduls sending_mail relativ zum Verzeichnis des aktuellen Skripts
+sending_mail_dir = os.path.join(current_dir, '..', 'Dienste')
+
+# Verzeichnis des Moduls sending_mail zum Suchpfad hinzufügen
+sys.path.append(sending_mail_dir)
+
 import sending_mail
 
 # Festlegen der Grenzwerte
