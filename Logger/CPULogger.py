@@ -9,7 +9,7 @@ soft_limit = 10
 hard_limit = 15
 
 # Netzwerkname der Maschine
-hostname = psutil.net_if_addrs()['Ethernet'][0].address
+hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 # Pfad zur Log-Datei im selben Ordner wie das Skript
 log_file_path = "./CPU-Log.txt"
