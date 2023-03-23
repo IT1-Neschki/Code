@@ -44,21 +44,21 @@ with open(auslastungs_log, 'a') as f:
 
 # Schreiben der aktuellen Disk-Auslastung in die Auslastungs-Logdatei
 with open(auslastungs_log, 'a') as logfile:
-    logfile.write('{} - {} - Disk usage at {}%\n'.format(
+    logfile.write('{} - {} - Festplattenauslastung bei {}%\n'.format(
         datetime.datetime.now(), hostname, used_percent))
 
 
 # Warnung bei Überschreitung des Softlimits
 if used_percent > soft_limit:
-    message = '{} - {} - WARNING: Disk usage at {}%'.format(
+    message = '{} - {} - WARNING: Festplattenauslastung bei {}%'.format(
         datetime.datetime.now(), hostname, used_percent)
     write_log(message)
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if used_percent > hard_limit:
-    message = '{} - {} - ERROR: Disk usage at {}%'.format(
+    message = '{} - {} - ERROR: Festplattenauslastung ist bei {}%'.format(
         datetime.datetime.now(), hostname, used_percent)
     write_log(message)
-    subject = 'Hard disk space exceeded on {}'.format(hostname)
-    body = 'Disk usage is at {}%.'.format(used_percent)
+    subject = 'Festplattenauslastung zu hoch bei  {}'.format(hostname)
+    body = 'Festplattenauslastung ist bei {}%.'.format(used_percent)
     sending_mail.send_email(subject, body)
