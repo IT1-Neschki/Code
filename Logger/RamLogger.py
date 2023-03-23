@@ -32,7 +32,7 @@ with open(auslastungs_log, 'a') as f:
 
 # Schreiben der aktuellen Ram-Auslastung in die Auslastungs-Logdatei
 with open(auslastungs_log, 'a') as logfile:
-    logfile.write('{} - {} - Disk usage at {}%\n'.format(
+    logfile.write('{} - {} - Ram usage at {}%\n'.format(
         datetime.datetime.now(), hostname, used_percent))
 
 # Warnung bei Überschreitung des Softlimits
