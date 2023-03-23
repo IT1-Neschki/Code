@@ -1,0 +1,2 @@
+Zeitstempel, CPU-Frequenz (MHz), CPU-Auslastung (%)
+2023-03-23 11:31:57, 2.16, 0.00
