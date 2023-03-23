@@ -6,8 +6,8 @@ import sending_mail
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
 
-soft_limit = 20
-hard_limit = 40
+soft_limit = 1
+hard_limit = 2
 
 # Überprüfen und Erstellen der Logdatei
 log_file = 'WarnungsLog.txt'
