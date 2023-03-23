@@ -1,5 +1,6 @@
 import time
 import subprocess
+import sys
 import os
 
 logger_dir = os.path.join(os.getcwd(), "Logger")
@@ -14,4 +15,4 @@ while (time.time() - start_time) < max_runtime:
     time.sleep(60)
     loop_count += 1
 
-print(f"Script ran for {loop_count} loops and {time.time() - start_time} seconds.")
+print(f"Skript lief für {loop_count} Kreisläufe und {time.time() - start_time} Sekunden.")
