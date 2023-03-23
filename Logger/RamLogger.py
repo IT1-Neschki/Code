@@ -3,11 +3,20 @@ import datetime
 import os
 import sending_mail
 
+<<<<<<< HEAD
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 soft_limit = 1
 hard_limit = 2
+=======
+# Festlegen der Grenzwerte
+soft_limit = 20
+hard_limit = 40
+>>>>>>> a6868f3b10eb3de3e6a94f51cd46ba069f95b538
+
+# Netzwerkname der Maschine
+hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 # Überprüfen und Erstellen der Logdatei
 log_file = 'WarnungsLog.txt'
@@ -28,6 +37,11 @@ used_percent = mem.percent
 auslastungs_log = 'AuslastungsLog.txt'
 with open(auslastungs_log, 'a') as f:
     f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+
+# Schreiben der aktuellen Ram-Auslastung in die Auslastungs-Logdatei
+with open(auslastungs_log, 'a') as logfile:
+    logfile.write('{} - {} - Ram usage at {}%\n'.format(
+        datetime.datetime.now(), hostname, used_percent))
 
 # Warnung bei Überschreitung des Softlimits
 if used_percent > soft_limit:
