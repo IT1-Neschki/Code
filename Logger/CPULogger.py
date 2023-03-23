@@ -11,14 +11,16 @@ hard_limit = 15
 # Netzwerkname der Maschine
 hostname = psutil.net_if_addrs()['WLAN'][0].address
 
-# Pfad zur Log-Datei im selben Ordner wie das Skript
-log_file_path = "./CPU-Log.txt"
+# Überprüfen und Erstellen der Logdatei
+log_file = './CPU-Log.txt'
+if not os.path.isfile(log_file):
+    with open(log_file, 'w') as f:
+        f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
-# Überprüfen, ob die Log-Datei vorhanden ist
-if not os.path.exists(log_file_path):
-    # Log-Datei erstellen, falls sie nicht vorhanden ist
-    with open(log_file_path, "w") as log_file:
-        log_file.write("Zeitstempel, CPU-Frequenz (MHz), CPU-Auslastung (%)\n")
+# Funktion zum Schreiben in die Logdatei
+def write_log(message):
+    with open(log_file, 'a') as logfile:
+        logfile.write(message + '\n')  # Hinzufügen von '\n' am Ende der Nachricht
 
 # CPU-Frequenz abrufen und in MHz konvertieren
 cpu_freq = psutil.cpu_freq().current / 1000
@@ -29,19 +31,24 @@ cpu_usage = psutil.cpu_percent()
 # Aktuelles Datum und Uhrzeit im ISO-Format abrufen
 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
 
+# Erstellen der Auslastungs-Logdatei
+auslastungs_log = 'AuslastungsLog.txt'
+with open(auslastungs_log, 'a') as f:
+    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+
 # CPU-Frequenz und Auslastung in die Log-Datei schreiben
-with open(log_file_path, "a") as log_file:
-    log_file.write(f"{timestamp}, {cpu_freq:.2f}, {cpu_usage:.2f}\n")
+with open(auslastungs_log, "a") as logfile:
+    logfile.write(f"{timestamp}, Freuquenz: {cpu_freq:.2f}, Auslastung: {cpu_usage:.2f}\n")
     
     # Warnung schreiben, falls CPU-Auslastung über Softlimit
     if cpu_usage > soft_limit:
-        log_file.write(f"{timestamp}, CPU-Auslastung bei: {cpu_usage:.2f}%\n")
+        write_log(f"{timestamp}, CPU-Auslastung bei: {cpu_usage:.2f}%\n")
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if cpu_usage > hard_limit:
     message = '{} - {} - ERROR: CPU usage at {}%'.format(
         datetime.datetime.now(), hostname, cpu_usage)
-    log_file.write(message)
+    write_log(message)
     subject = 'CPU exceeded on {}'.format(hostname)
     body = 'CPU usage is at {}%.'.format(cpu_usage)
     sending_mail.send_email(subject, body)
