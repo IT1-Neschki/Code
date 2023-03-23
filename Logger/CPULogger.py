@@ -5,7 +5,7 @@ import os
 import sending_mail
 
 # Festlegen der Grenzwerte
-soft_limit = 2
+soft_limit = 10
 hard_limit = 15
 
 # Netzwerkname der Maschine
@@ -35,7 +35,7 @@ with open(log_file_path, "a") as log_file:
     
     # Warnung schreiben, falls CPU-Auslastung über Softlimit
     if cpu_usage > soft_limit:
-        log_file.write(f"{timestamp}, CPU-Auslastung über 20%: {cpu_usage:.2f}\n")
+        log_file.write(f"{timestamp}, CPU-Auslastung bei: {cpu_usage:.2f}%\n")
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if cpu_usage > hard_limit:
