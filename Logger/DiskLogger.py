@@ -11,7 +11,7 @@ hard_limit = 15
 hostname = psutil.net_if_addrs()['WLAN'][0].address
 
 # Überprüfen und Erstellen der Logdatei
-log_file = 'log.txt'
+log_file = 'WarnungsLog.txt'
 if not os.path.isfile(log_file):
     with open(log_file, 'w') as f:
         f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
