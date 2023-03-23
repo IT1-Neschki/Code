@@ -1,28 +1,45 @@
 import psutil
-import logging
 import datetime
+import os
 import sending_mail
 
 # Netzwerkname der Maschine
-hostname = psutil.net_if_addrs()['Ethernet'][0].address
+hostname = psutil.net_if_addrs()['WLAN'][0].address
 
+soft_limit = 20
 hard_limit = 40
 
-logging.basicConfig(filename='memory.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Überprüfen und Erstellen der Logdatei
+log_file = 'WarnungsLog.txt'
+if not os.path.isfile(log_file):
+    with open(log_file, 'w') as f:
+        f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
+# Funktion zum Schreiben in die Logdatei
+def write_log(message):
+    with open(log_file, 'a') as logfile:
+        logfile.write(message + '\n')  # Hinzufügen von '\n' am Ende der Nachricht
+
+#Überprüfung der Ram Auslastung
 mem = psutil.virtual_memory()
 used_percent = mem.percent
 
-if used_percent >= hard_limit:
-    logging.warning(f"RAM usage is {used_percent}%, which is over the warning threshold.")
+# Erstellen der Auslastungs-Logdatei
+auslastungs_log = 'AuslastungsLog.txt'
+with open(auslastungs_log, 'a') as f:
+    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
-logging.info(f"RAM usage: {used_percent}%")
+# Warnung bei Überschreitung des Softlimits
+if used_percent > soft_limit:
+    message = '{} - {} - WARNING: Ram usage at {}%'.format(
+        datetime.datetime.now(), hostname, used_percent)
+    write_log(message)
 
     # E-Mail-Versand bei Überschreitung des Hardlimits
 if used_percent > hard_limit:
-    message = '{} - {} - ERROR: Disk usage at {}%'.format(
+    message = '{} - {} - ERROR: Ram usage at {}%'.format(
         datetime.datetime.now(), hostname, used_percent)
     write_log(message)
-    subject = 'Hard disk space exceeded on {}'.format(hostname)
-    body = 'Disk usage is at {}%.'.format(used_percent)
+    subject = 'Ram space exceeded on {}'.format(hostname)
+    body = 'Ram usage is at {}%.'.format(used_percent)
     sending_mail.send_email(subject, body)
