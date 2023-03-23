@@ -44,9 +44,9 @@ with open(auslastungs_log, "a") as logfile:
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if cpu_usage > hard_limit:
-    message = '{} - {} - ERROR: CPU usage at {}%'.format(
+    message = '{} - {} - ERROR: CPU Auslastung bei {}%'.format(
         datetime.datetime.now(), hostname, cpu_usage)
     write_log(message)
-    subject = 'CPU exceeded on {}'.format(hostname)
-    body = 'CPU usage is at {}%.'.format(cpu_usage)
+    subject = 'CPU zu hoch bei {}'.format(hostname)
+    body = 'CPU Auslastung ist bei {}%.'.format(cpu_usage)
     sending_mail.send_email(subject, body)

@@ -36,20 +36,20 @@ with open(auslastungs_log, 'a') as f:
 
 # Schreiben der aktuellen Ram-Auslastung in die Auslastungs-Logdatei
 with open(auslastungs_log, 'a') as logfile:
-    logfile.write('{} - {} - Ram usage at {}%\n'.format(
+    logfile.write('{} - {} - Ramauslastung bei {}%\n'.format(
         datetime.datetime.now(), hostname, used_percent))
 
 # Warnung bei Überschreitung des Softlimits
 if used_percent > soft_limit:
-    message = '{} - {} - WARNING: Ram usage at {}%'.format(
+    message = '{} - {} - WARNING: Ramauslastung bei {}%'.format(
         datetime.datetime.now(), hostname, used_percent)
     write_log(message)
 
     # E-Mail-Versand bei Überschreitung des Hardlimits
 if used_percent > hard_limit:
-    message = '{} - {} - ERROR: Ram usage at {}%'.format(
+    message = '{} - {} - ERROR: Ramauslastung bei {}%'.format(
         datetime.datetime.now(), hostname, used_percent)
     write_log(message)
-    subject = 'Ram space exceeded on {}'.format(hostname)
-    body = 'Ram usage is at {}%.'.format(used_percent)
+    subject = 'Ramauslastung zu hoch bei {}'.format(hostname)
+    body = 'Ramauslastung bei {}%.'.format(used_percent)
     sending_mail.send_email(subject, body)
