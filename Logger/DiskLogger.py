@@ -36,12 +36,12 @@ def write_log(message):
 disk_usage = psutil.disk_usage('/')
 used_percent = disk_usage.percent
 
-# Erstellen der Auslastungs-Logdatei
+# Überprüfen und Erstellen der Logdatei
 auslastungs_log = 'AuslastungsLog.txt'
-with open(auslastungs_log, 'a') as f:
-    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+if not os.path.isfile(auslastungs_log):
+    with open(auslastungs_log, 'w') as f:
+        f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
-# Schreiben der aktuellen Disk-Auslastung in die Auslastungs-Logdatei
 with open(auslastungs_log, 'a') as logfile:
     logfile.write('{} - {} - Festplattenauslastung bei {}%\n'.format(
         datetime.datetime.now(), hostname, used_percent))
