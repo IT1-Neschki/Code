@@ -31,9 +31,14 @@ cpu_usage = psutil.cpu_percent()
 # Aktuelles Datum und Uhrzeit im ISO-Format abrufen
 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
 
+# Erstellen der Auslastungs-Logdatei
+auslastungs_log = 'AuslastungsLog.txt'
+with open(auslastungs_log, 'a') as f:
+    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+
 # CPU-Frequenz und Auslastung in die Log-Datei schreiben
-with open(log_file, "a") as logfile:
-    logfile.write(f"{timestamp}, {cpu_freq:.2f}, {cpu_usage:.2f}\n")
+with open(auslastungs_log, "a") as logfile:
+    logfile.write(f"{timestamp}, Freuquenz: {cpu_freq:.2f}, Auslastung: {cpu_usage:.2f}\n")
     
     # Warnung schreiben, falls CPU-Auslastung über Softlimit
     if cpu_usage > soft_limit:
