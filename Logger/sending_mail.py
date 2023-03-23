@@ -3,7 +3,7 @@ import smtplib
 # E-Mail-Konfiguration
 sender_email = 'testlf8code@gmail.com'
 receiver_email = 'testlf8code@gmail.com'
-password = 'da kommt das passwort hin'
+password = 'muhuetrlghvexkrz'
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 
