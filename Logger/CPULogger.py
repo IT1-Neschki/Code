@@ -50,13 +50,13 @@ if not os.path.isfile(auslastungs_log):
 
 # CPU-Frequenz und Auslastung in die Log-Datei schreiben
 with open(auslastungs_log, "a") as logfile:
-    logfile.write(f"{timestamp}, CPU-Frequenz: {cpu_freq:.2f}, CPU-Auslastung: {cpu_usage:.2f}\n")
+    logfile.write(f"{timestamp}, CPU-Frequenz: {cpu_freq:.2f}GHz, CPU-Auslastung: {cpu_usage:.2f}%\n")
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if cpu_usage > hard_limit:
     message = '{} - {} - ERROR: CPU Auslastung bei {}%'.format(
         datetime.datetime.now(), hostname, cpu_usage)
     write_log(message)
-    subject = 'CPU zu hoch bei {}'.format(hostname)
+    subject = 'CPU zu hoch bei {}%'.format(hostname)
     body = 'CPU Auslastung ist bei {}%.'.format(cpu_usage)
     sending_mail.send_email(subject, body)
