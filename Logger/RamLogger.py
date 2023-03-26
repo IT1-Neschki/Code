@@ -40,8 +40,9 @@ used_percent = mem.percent
 
 # Erstellen der Auslastungs-Logdatei
 auslastungs_log = 'AuslastungsLog.txt'
-with open(auslastungs_log, 'a') as f:
-    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+if not os.path.isfile(auslastungs_log):
+    with open(auslastungs_log, 'a') as f:
+        f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
 # Schreiben der aktuellen Ram-Auslastung in die Auslastungs-Logdatei
 with open(auslastungs_log, 'a') as logfile:

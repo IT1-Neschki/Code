@@ -44,12 +44,13 @@ def write_log(message):
 
 # Erstellen der Auslastungs-Logdatei
 auslastungs_log = 'AuslastungsLog.txt'
-with open(auslastungs_log, 'a') as f:
-    f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
+if not os.path.isfile(auslastungs_log):
+    with open(auslastungs_log, 'a') as f:
+         f.write('Logdatei erstellt am {}\n'.format(datetime.datetime.now()))
 
 # CPU-Frequenz und Auslastung in die Log-Datei schreiben
 with open(auslastungs_log, "a") as logfile:
-    logfile.write(f"{timestamp}, Frequenz: {cpu_freq:.2f}, Auslastung: {cpu_usage:.2f}\n")
+    logfile.write(f"{timestamp}, CPU-Frequenz: {cpu_freq:.2f}, CPU-Auslastung: {cpu_usage:.2f}\n")
 
 # E-Mail-Versand bei Überschreitung des Hardlimits
 if cpu_usage > hard_limit:
