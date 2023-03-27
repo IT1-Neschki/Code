@@ -5,6 +5,6 @@
 # Zum vorzeitigen Ausschalten des Skripts, im Terminal STRG + C drücken
 
 
-#Raspotin = Justin B.
-#Frieto = Tobias F.
-#Neschki = Michel N.
+# Raspotin = Justin B.
+# Frieto = Tobias F.
+# Neschki = Michel N.
