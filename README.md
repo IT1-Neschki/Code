@@ -3,3 +3,8 @@
 # Zum Ausführen der Automatisierten Logs, muss main.py ausgeführt werden.
 # main.py wird dann alle 60 Sekunden (1min) ausgeführt, max. 300 Sekunden (5min)
 # Zum vorzeitigen Ausschalten des Skripts, im Terminal STRG + C drücken
+
+
+#Raspotin = Justin B.
+#Frieto = Tobias F.
+#Neschki = Michel N.
